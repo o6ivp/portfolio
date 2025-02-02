@@ -1,4 +1,10 @@
 import { useLanguage } from "../contexts/LanguageContext";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 
 const Research = () => {
   const { t } = useLanguage();

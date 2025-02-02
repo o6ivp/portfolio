@@ -1,6 +1,7 @@
 import { useLanguage } from "../contexts/LanguageContext";
-import { Mail, GithubIcon, Linkedin } from "lucide-react";
-
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Mail, Github, Linkedin } from "lucide-react";
 const Contact = () => {
   const { t } = useLanguage();
 
@@ -25,7 +26,7 @@ const Contact = () => {
             rel="noopener noreferrer"
             className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
           >
-            <GithubIcon className="w-6 h-6 mr-2" />
+            <Github className="w-6 h-6 mr-2" />
             <span>{t("contact.github")}</span>
           </a>
           <a

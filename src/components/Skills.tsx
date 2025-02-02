@@ -1,4 +1,11 @@
 import { useLanguage } from "../contexts/LanguageContext";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
+import { Progress } from "../components/ui/progress";
 import { Cpu, Database, Cloud, Server } from "lucide-react";
 
 const Skills = () => {

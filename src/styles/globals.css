@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ベースカラー */
+    --background: 46 68% 94%;
+    /* #F2E5BF をより薄く */
+    --foreground: 189 54% 32%;
+    /* #257180 */
+
+    /* メインカラー - ターコイズブルー */
+    --primary: 189 54% 32%;
+    /* #257180 */
+    --primary-foreground: 46 68% 94%;
+    /* 薄いベージュ */
+
+    /* セカンダリー - ベージュ */
+    --secondary: 46 68% 86%;
+    /* #F2E5BF */
+    --secondary-foreground: 189 54% 32%;
+    /* #257180 */
+
+    /* アクセント - オレンジ */
+    --accent: 21 98% 65%;
+    /* #FD8B51 */
+    --accent-foreground: 0 0% 100%;
+    /* 白 */
+
+    /* 補助色 - 赤褐色 */
+    --tertiary: 15 52% 52%;
+    /* #CB6040 */
+    --tertiary-foreground: 0 0% 100%;
+    /* 白 */
+
+    /* その他の UI 要素 */
+    --muted: 189 54% 95%;
+    /* 非常に薄いターコイズ */
+    --muted-foreground: 189 54% 40%;
+    /* やや薄いターコイズ */
+
+    --card: 0 0% 100%;
+    /* 純白 */
+    --card-foreground: 189 54% 32%;
+    /* #257180 */
+
+    --popover: 0 0% 100%;
+    /* 純白 */
+    --popover-foreground: 189 54% 32%;
+    /* #257180 */
+
+    --border: 46 68% 86%;
+    /* #F2E5BF */
+    --input: 189 54% 95%;
+    /* 非常に薄いターコイズ */
+    --ring: 21 98% 65%;
+    /* #FD8B51 */
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 189 54% 15%;
+    --foreground: 0 0% 100%;
+
+    --primary: 189 54% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 46 68% 86%;
+    --secondary-foreground: 189 54% 32%;
+
+    --accent: 21 98% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --tertiary: 15 52% 52%;
+    --tertiary-foreground: 0 0% 100%;
+
+    --muted: 189 54% 25%;
+    --muted-foreground: 215 20.2% 75%;
+
+    --card: 189 54% 20%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 189 54% 20%;
+    --popover-foreground: 0 0% 100%;
+
+    --border: 189 54% 30%;
+    --input: 189 54% 30%;
+    --ring: 46 68% 86%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Poppins", "Noto Sans JP", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 py-16;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold mb-8 text-primary;
+  }
+
+  .card {
+    @apply bg-white/95 dark:bg-primary/10 backdrop-blur-sm rounded-lg shadow-lg p-6 border border-secondary/20 hover:border-accent/30 transition-all duration-300;
+  }
+
+  .nav-link {
+    @apply text-primary hover:text-accent transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-accent transition-colors duration-200 rounded-lg px-4 py-2 shadow-md hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-primary hover:bg-accent hover:text-white transition-colors duration-200 rounded-lg px-4 py-2 shadow-md hover:shadow-lg;
+  }
+}
