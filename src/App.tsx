@@ -11,7 +11,7 @@ import QRCode from "./components/QRCode";
 
 const App = () => {
   return (
-    <Router basename="/portfolio">
+    <Router>
       <LanguageProvider>
         <Routes>
           <Route
