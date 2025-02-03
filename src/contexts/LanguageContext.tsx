@@ -28,9 +28,10 @@ const translations = {
     // Skills Section
     "skills.title": "Technical Skills",
     "skills.languages": "Programming Languages",
-    "skills.frameworks": "Frameworks & Tools",
+    "skills.frameworks": "Frameworks",
     "skills.databases": "Databases",
     "skills.cloud": "Cloud Services (AWS)",
+    "skills.tools": "Tools",
     "skills.years": "years",
 
     // Projects Section
@@ -91,6 +92,8 @@ const translations = {
     "research.project.tech": "Technologies Used",
     "research.tech.stack":
       "Python, OpenCV, dlib, Raspberry Pi, I2C, CO2 Sensor, Distance Sensor, Infrared Sensor, TensorFlow",
+    "research.details": "Details",
+    "research.details.item1": "https://github.com/squiffer9/drosiness_detection",
 
     // Contact Section
     "contact.title": "Contact",
@@ -111,7 +114,7 @@ const translations = {
     // About Section
     "about.title": "ソフトウェアエンジニア",
     "about.description":
-      "IoTソリューションとWebアプリケーション開発の経験を持つフルスタック開発者。防衛大学校卒業生としてエンジニアリングの基礎を確立。現在はクラウドネイティブ開発に注力し、国際的な機会を求めています。",
+      "IoTソリューションとWebアプリケーション開発を経験しました。現在はクラウドネイティブ開発に注力しており、AWSの知見を増やしたいと考えています。",
     "about.age": "歳",
     "about.location": "日本",
     "about.remote": "リモートワーク可能",
@@ -119,9 +122,10 @@ const translations = {
     // Skills Section
     "skills.title": "技術スキル",
     "skills.languages": "プログラミング言語",
-    "skills.frameworks": "フレームワーク・ツール",
+    "skills.frameworks": "フレームワーク",
     "skills.databases": "データベース",
     "skills.cloud": "クラウドサービス（AWS）",
+    "skills.tools": "ツール",
     "skills.years": "年",
 
     // Projects Section
@@ -158,9 +162,9 @@ const translations = {
     "projects.tech": "使用技術",
 
     // Research Section
-    "research.title": "研究経験",
-    "research.project.title": "居眠り防止システムの研究",
-    "research.project.subtitle": "防衛大学校 卒業研究",
+    "research.title": "卒業研究",
+    "research.project.title": "居眠り防止システムの基礎研究",
+    "research.project.subtitle": "授業中の居眠りと二酸化炭素濃度、室温、体表面温度、瞬きの回数の関係のリアルタイム分析",
     "research.project.overview": "プロジェクト概要",
     "research.project.description":
       "環境条件とユーザーの状態を複数のセンサーとコンピュータビジョンを用いてモニタリングし、居眠りを検知・防止するシステムを開発。",
@@ -173,6 +177,8 @@ const translations = {
     "research.project.tech": "使用技術",
     "research.tech.stack":
       "Python, OpenCV, dlib, Raspberry Pi, I2C, CO2センサー, 測距センサー, 赤外線センサー, TensorFlow",
+    "research.details": "詳細",
+    "research.details.item1": "https://github.com/squiffer9/drosiness_detection",
 
     // Contact Section
     "contact.title": "連絡先",

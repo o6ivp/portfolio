@@ -1,151 +1,155 @@
+import React from 'react';
 import { useLanguage } from "../contexts/LanguageContext";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "../components/ui/card";
-import { Progress } from "../components/ui/progress";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Cpu, Database, Cloud, Server } from "lucide-react";
+
+const SkillBadge = ({ name, years, isMain = false }) => (
+  <div className="group relative inline-block m-1">
+    <Badge 
+      variant={isMain ? "default" : "secondary"}
+      className={`
+        text-sm px-3 py-1 cursor-default transition-all
+        ${isMain ? 'hover:bg-primary/90' : 'hover:bg-secondary/90'}
+      `}
+    >
+      {name}
+      {years && (
+        <span className="ml-2 opacity-70">• {years}y</span>
+      )}
+    </Badge>
+  </div>
+);
+
+const SkillSection = ({ title, skills, icon: Icon, t }) => {
+  const mainSkills = skills.filter(skill => skill.years >= 2);
+  const otherSkills = skills.filter(skill => !skill.years || skill.years < 2);
+
+  return (
+    <Card className="w-full h-full">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2 text-xl">
+          <Icon className="w-5 h-5" />
+          <span>{t(title)}</span>
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-4">
+          {mainSkills.length > 0 && (
+            <div>
+              <h4 className="text-sm font-medium text-muted-foreground mb-2">
+                Main Skills
+              </h4>
+              <div className="flex flex-wrap gap-1">
+                {mainSkills.map((skill) => (
+                  <SkillBadge
+                    key={skill.name}
+                    name={skill.name}
+                    years={skill.years}
+                    isMain={true}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+          {otherSkills.length > 0 && (
+            <div>
+              <h4 className="text-sm font-medium text-muted-foreground mb-2">
+                Additional Skills
+              </h4>
+              <div className="flex flex-wrap gap-1">
+                {otherSkills.map((skill) => (
+                  <SkillBadge
+                    key={skill.name}
+                    name={skill.name}
+                    years={skill.years}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
 
 const Skills = () => {
   const { t } = useLanguage();
 
   const skills = {
     languages: [
-      { name: "Golang", level: 80, years: 2 },
-      { name: "Python", level: 80, years: 2 },
-      { name: "Ruby", level: 60, years: 1 },
-      { name: "TypeScript", level: 60, years: 1 },
-      { name: "C/C++", level: 60, years: 1 },
+      { name: "Golang", years: 2 },
+      { name: "Python", years: 2 },
+      { name: "Ruby", years: 1 },
+      { name: "TypeScript", years: 1 },
+      { name: "C/C++", years: 1 }
     ],
     frameworks: [
-      { name: "React", level: 75 },
-      { name: "Flask", level: 75 },
-      { name: "TensorFlow", level: 65 },
-      { name: "Streamlit", level: 70 },
+      { name: "React", years: 1 },
+      { name: "Flask", years: 2 },
+      { name: "TensorFlow" },
+      { name: "Streamlit" },
+      { name: "Ruby on Rails" }
     ],
     databases: [
-      { name: "MySQL", level: 70 },
-      { name: "PostgreSQL", level: 65 },
-      { name: "MariaDB", level: 65 },
-      { name: "InfluxDB", level: 60 },
+      { name: "MySQL", years: 1 },
+      { name: "PostgreSQL", years: 1 },
+      { name: "MariaDB" },
+      { name: "InfluxDB" },
+      { name: "DynamoDB" }
     ],
     cloud: [
-      { name: "AWS Lambda", level: 75 },
-      { name: "API Gateway", level: 70 },
-      { name: "Cognito", level: 70 },
-      { name: "S3", level: 75 },
-      { name: "CloudFront", level: 70 },
+      { name: "AWS Lambda"},
+      { name: "API Gateway"},
+      { name: "Cognito"},
+      { name: "S3"},
+      { name: "CloudFront"},
+      { name: "DynamoDB"}
     ],
+    tools: [
+      { name: "Docker", years: 2 },
+      { name: "Terraform"},
+      { name: "Git", years: 2 },
+      { name: "GitHub Actions"},
+      { name: "Ansible"}
+    ]
   };
 
   return (
-    <section id="skills" className="section-container">
-      <h2 className="section-title">{t("skills.title")}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Programming Languages */}
-        <div className="card">
-          <div className="flex items-center mb-4">
-            <Cpu className="w-6 h-6 mr-2 text-blue-600" />
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-              {t("skills.languages")}
-            </h3>
-          </div>
-          {skills.languages.map((skill) => (
-            <div key={skill.name} className="mb-4">
-              <div className="flex justify-between mb-1">
-                <span className="text-gray-700 dark:text-gray-300">
-                  {skill.name}
-                </span>
-                <span className="text-gray-600 dark:text-gray-400">
-                  {skill.years} {t("skills.years")}
-                </span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                <div
-                  className="bg-blue-600 h-2.5 rounded-full"
-                  style={{ width: `${skill.level}%` }}
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Databases */}
-        <div className="card">
-          <div className="flex items-center mb-4">
-            <Database className="w-6 h-6 mr-2 text-green-600" />
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-              {t("skills.databases")}
-            </h3>
-          </div>
-          {skills.databases.map((skill) => (
-            <div key={skill.name} className="mb-4">
-              <div className="flex justify-between mb-1">
-                <span className="text-gray-700 dark:text-gray-300">
-                  {skill.name}
-                </span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                <div
-                  className="bg-green-600 h-2.5 rounded-full"
-                  style={{ width: `${skill.level}%` }}
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Cloud & AWS */}
-        <div className="card">
-          <div className="flex items-center mb-4">
-            <Cloud className="w-6 h-6 mr-2 text-purple-600" />
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-              {t("skills.cloud")}
-            </h3>
-          </div>
-          {skills.cloud.map((skill) => (
-            <div key={skill.name} className="mb-4">
-              <div className="flex justify-between mb-1">
-                <span className="text-gray-700 dark:text-gray-300">
-                  {skill.name}
-                </span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                <div
-                  className="bg-purple-600 h-2.5 rounded-full"
-                  style={{ width: `${skill.level}%` }}
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Frameworks */}
-        <div className="card">
-          <div className="flex items-center mb-4">
-            <Server className="w-6 h-6 mr-2 text-orange-600" />
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-              {t("skills.frameworks")}
-            </h3>
-          </div>
-          {skills.frameworks.map((skill) => (
-            <div key={skill.name} className="mb-4">
-              <div className="flex justify-between mb-1">
-                <span className="text-gray-700 dark:text-gray-300">
-                  {skill.name}
-                </span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                <div
-                  className="bg-orange-600 h-2.5 rounded-full"
-                  style={{ width: `${skill.level}%` }}
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div>
+    <section id="skills" className="container py-16">
+      <h2 className="text-3xl font-bold mb-8">{t('skills.title')}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <SkillSection
+          title="skills.languages"
+          skills={skills.languages}
+          icon={Cpu}
+          t={t}
+        />
+        <SkillSection
+          title="skills.databases"
+          skills={skills.databases}
+          icon={Database}
+          t={t}
+        />
+        <SkillSection
+          title="skills.cloud"
+          skills={skills.cloud}
+          icon={Cloud}
+          t={t}
+        />
+        <SkillSection
+          title="skills.frameworks"
+          skills={skills.frameworks}
+          icon={Server}
+          t={t}
+        />
+        <SkillSection
+          title="skills.tools"
+          skills={skills.tools}
+          icon={Server}
+          t={t}
+        />
       </div>
     </section>
   );

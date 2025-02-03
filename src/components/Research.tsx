@@ -44,13 +44,21 @@ const Research = () => {
             ))}
           </ul>
         </div>
-        <div>
+        <div className="mb-6">
           <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
             {t("research.project.tech")}
           </h4>
           <p className="text-gray-600 dark:text-gray-300">
             {t("research.tech.stack")}
           </p>
+        </div>
+        <div>
+          <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
+            {t("research.details")}
+          </h4>
+          <a href="https://github.com/squiffer9/drowsiness_detection" className="text-gray-600 dark:text-gray-300">
+            {t("research.details.item1")}
+          </a>
         </div>
       </div>
     </section>
