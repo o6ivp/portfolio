@@ -1,14 +1,11 @@
 import { useLanguage } from "../contexts/LanguageContext";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "../components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const Projects = () => {
   const { t } = useLanguage();
 
+  // Project data structure
   const projects = [
     {
       title: "projects.attendance.title",
@@ -20,7 +17,15 @@ const Projects = () => {
         t("projects.attendance.responsibilities.3"),
         t("projects.attendance.responsibilities.4"),
       ],
-      tech: "Go, React, AWS (Lambda, API Gateway, Cognito, S3, CloudFront)",
+      tech: [
+        "Go",
+        "React",
+        "AWS Lambda",
+        "API Gateway",
+        "Cognito",
+        "S3",
+        "CloudFront",
+      ],
     },
     {
       title: "projects.iot.title",
@@ -32,7 +37,7 @@ const Projects = () => {
         t("projects.iot.responsibilities.3"),
         t("projects.iot.responsibilities.4"),
       ],
-      tech: "C++, Flask, MySQL, Grafana",
+      tech: ["C++", "Flask", "MySQL", "Grafana"],
     },
     {
       title: "projects.vpn.title",
@@ -43,44 +48,75 @@ const Projects = () => {
         t("projects.vpn.responsibilities.2"),
         t("projects.vpn.responsibilities.3"),
       ],
-      tech: "Ubuntu, WireGuard, Shell Script",
+      tech: ["Ubuntu", "WireGuard", "Shell Script"],
     },
   ];
 
   return (
-    <section id="projects" className="section-container">
-      <h2 className="section-title">{t("projects.title")}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section id="projects">
+      {/* Section header */}
+      <div className="mb-6 sm:mb-8">
+        <h2 className="text-2xl sm:text-3xl font-bold">
+          {t("projects.title")}
+        </h2>
+      </div>
+
+      {/* Projects grid - single column on mobile, two columns on tablet and up */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {projects.map((project, index) => (
-          <div key={index} className="card">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              {t(project.title)}
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              {t(project.description)}
-            </p>
-            <div className="mb-4">
-              <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
-                {t(project.role)}
-              </h4>
-            </div>
-            <div className="mb-4">
-              <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
-                {t("projects.responsibilities")}
-              </h4>
-              <ul className="list-disc list-inside text-gray-600 dark:text-gray-300">
-                {project.responsibilities.map((resp, i) => (
-                  <li key={i}>{resp}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
-                {t("projects.tech")}
-              </h4>
-              <p className="text-gray-600 dark:text-gray-300">{project.tech}</p>
-            </div>
-          </div>
+          <Card key={index} className="flex flex-col">
+            <CardHeader>
+              <CardTitle className="text-xl sm:text-2xl">
+                {t(project.title)}
+              </CardTitle>
+            </CardHeader>
+
+            <CardContent className="flex-1 space-y-4">
+              {/* Project description */}
+              <p className="text-sm sm:text-base text-muted-foreground">
+                {t(project.description)}
+              </p>
+
+              {/* Role */}
+              <div>
+                <h4 className="font-semibold mb-2 text-sm sm:text-base">
+                  {t(project.role)}
+                </h4>
+              </div>
+
+              {/* Responsibilities */}
+              <div>
+                <h4 className="font-semibold mb-2 text-sm sm:text-base">
+                  {t("projects.responsibilities")}
+                </h4>
+                <ul className="list-disc list-inside text-sm sm:text-base text-muted-foreground space-y-1">
+                  {project.responsibilities.map((resp, i) => (
+                    <li key={i} className="pl-1">
+                      {resp}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Technologies */}
+              <div>
+                <h4 className="font-semibold mb-2 text-sm sm:text-base">
+                  {t("projects.tech")}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech, i) => (
+                    <Badge
+                      key={i}
+                      variant="secondary"
+                      className="text-xs sm:text-sm"
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </section>

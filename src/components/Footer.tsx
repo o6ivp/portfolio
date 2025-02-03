@@ -1,8 +1,9 @@
 const Footer = () => {
   return (
     <footer className="border-t bg-background">
-      <div className="container py-6">
-        <p className="text-center text-muted-foreground">
+      {/* Added responsive padding and text size */}
+      <div className="container py-4 sm:py-6">
+        <p className="text-center text-sm sm:text-base text-muted-foreground">
           © {new Date().getFullYear()} Daigo Yamashita. All rights reserved.
         </p>
       </div>

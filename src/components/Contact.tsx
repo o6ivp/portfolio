@@ -2,44 +2,66 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, Github, Linkedin } from "lucide-react";
+
 const Contact = () => {
   const { t } = useLanguage();
 
+  // Contact links data
+  const contactLinks = [
+    {
+      href: "mailto:squiffer9@gmail.com",
+      icon: Mail,
+      label: "contact.email",
+    },
+    {
+      href: "https://github.com/squiffer9",
+      icon: Github,
+      label: "contact.github",
+    },
+    {
+      href: "https://linkedin.com/in/daigo-yamashita-ab6235328",
+      icon: Linkedin,
+      label: "contact.linkedin",
+    },
+  ];
+
   return (
-    <section id="contact" className="section-container">
-      <h2 className="section-title">{t("contact.title")}</h2>
-      <div className="card">
-        <p className="text-gray-600 dark:text-gray-300 mb-6">
-          {t("contact.message")}
-        </p>
-        <div className="flex flex-wrap gap-6">
-          <a
-            href="mailto:squiffer9@gmail.com"
-            className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-          >
-            <Mail className="w-6 h-6 mr-2" />
-            <span>{t("contact.email")}</span>
-          </a>
-          <a
-            href="https://github.com/squiffer9"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-          >
-            <Github className="w-6 h-6 mr-2" />
-            <span>{t("contact.github")}</span>
-          </a>
-          <a
-            href="https://linkedin.com/in/daigo-yamashita-ab6235328"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-          >
-            <Linkedin className="w-6 h-6 mr-2" />
-            <span>{t("contact.linkedin")}</span>
-          </a>
-        </div>
-      </div>
+    <section id="contact">
+      <Card className="w-full">
+        <CardHeader>
+          {/* Responsive title size */}
+          <CardTitle className="text-2xl sm:text-3xl">
+            {t("contact.title")}
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent className="space-y-6">
+          {/* Message with responsive text size */}
+          <p className="text-sm sm:text-base text-muted-foreground">
+            {t("contact.message")}
+          </p>
+
+          {/* Contact links container - vertical on mobile */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+            {contactLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.href.startsWith("mailto") ? undefined : "_blank"}
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="outline"
+                  className="w-full sm:w-auto justify-start gap-3"
+                >
+                  <link.icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="text-sm sm:text-base">{t(link.label)}</span>
+                </Button>
+              </a>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </section>
   );
 };

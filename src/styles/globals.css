@@ -6,58 +6,39 @@
 
 @layer base {
   :root {
-    /* ベースカラー */
+    /* Base Colors */
     --background: 46 68% 94%;
-    /* #F2E5BF をより薄く */
     --foreground: 189 54% 32%;
-    /* #257180 */
 
-    /* メインカラー - ターコイズブルー */
+    /* Main Colors - Turquoise Blue */
     --primary: 189 54% 32%;
-    /* #257180 */
     --primary-foreground: 46 68% 94%;
-    /* 薄いベージュ */
 
-    /* セカンダリー - ベージュ */
+    /* Secondary Colors - Beige */
     --secondary: 46 68% 86%;
-    /* #F2E5BF */
     --secondary-foreground: 189 54% 32%;
-    /* #257180 */
 
-    /* アクセント - オレンジ */
+    /* Accent Colors - Orange */
     --accent: 21 98% 65%;
-    /* #FD8B51 */
     --accent-foreground: 0 0% 100%;
-    /* 白 */
 
-    /* 補助色 - 赤褐色 */
+    /* Supporting Colors - Reddish Brown */
     --tertiary: 15 52% 52%;
-    /* #CB6040 */
     --tertiary-foreground: 0 0% 100%;
-    /* 白 */
 
-    /* その他の UI 要素 */
+    /* UI Element Colors */
     --muted: 189 54% 95%;
-    /* 非常に薄いターコイズ */
     --muted-foreground: 189 54% 40%;
-    /* やや薄いターコイズ */
 
     --card: 0 0% 100%;
-    /* 純白 */
     --card-foreground: 189 54% 32%;
-    /* #257180 */
 
     --popover: 0 0% 100%;
-    /* 純白 */
     --popover-foreground: 189 54% 32%;
-    /* #257180 */
 
     --border: 46 68% 86%;
-    /* #F2E5BF */
     --input: 189 54% 95%;
-    /* 非常に薄いターコイズ */
     --ring: 21 98% 65%;
-    /* #FD8B51 */
 
     --radius: 0.75rem;
   }
@@ -98,9 +79,23 @@
     @apply border-border;
   }
 
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+    /* Prevent pull-to-refresh on mobile */
+    overscroll-behavior-y: none;
+    /* Enable smooth scrolling on Safari iOS */
+    -webkit-overflow-scrolling: touch;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     font-family: "Poppins", "Noto Sans JP", sans-serif;
+    /* Improve mobile text rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent unwanted text size adjustment */
+    text-size-adjust: 100%;
   }
 
   h1,
@@ -115,26 +110,73 @@
 
 @layer components {
   .section-container {
-    @apply max-w-6xl mx-auto px-4 py-16;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16;
   }
 
   .section-title {
-    @apply text-3xl font-bold mb-8 text-primary;
+    @apply text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-primary;
   }
 
   .card {
-    @apply bg-white/95 dark:bg-primary/10 backdrop-blur-sm rounded-lg shadow-lg p-6 border border-secondary/20 hover:border-accent/30 transition-all duration-300;
+    @apply bg-white/95 dark:bg-primary/10 backdrop-blur-sm rounded-lg shadow-lg p-4 sm:p-6 border border-secondary/20 hover:border-accent/30 transition-all duration-300;
   }
 
   .nav-link {
-    @apply text-primary hover:text-accent transition-colors duration-200;
+    @apply text-primary hover:text-accent transition-colors duration-200 px-3 py-2 rounded-md text-sm sm:text-base;
   }
 
   .btn-primary {
-    @apply bg-primary text-white hover:bg-accent transition-colors duration-200 rounded-lg px-4 py-2 shadow-md hover:shadow-lg;
+    @apply bg-primary text-white hover:bg-accent transition-colors duration-200 rounded-lg px-4 py-2 shadow-md hover:shadow-lg text-sm sm:text-base disabled:opacity-50;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-primary hover:bg-accent hover:text-white transition-colors duration-200 rounded-lg px-4 py-2 shadow-md hover:shadow-lg;
+    @apply bg-secondary text-primary hover:bg-accent hover:text-white transition-colors duration-200 rounded-lg px-4 py-2 shadow-md hover:shadow-lg text-sm sm:text-base disabled:opacity-50;
+  }
+}
+
+/* Mobile Touch Improvements */
+@layer utilities {
+  .tap-highlight-none {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .touch-action-none {
+    touch-action: none;
+  }
+
+  /* Improve mobile scrolling */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent text selection during touch interactions */
+  .no-select {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+
+  /* Improve touch targets */
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Optimize mobile forms */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+    /* Prevent zoom on iOS */
+  }
+
+  /* Improve scrolling performance */
+  * {
+    -webkit-overflow-scrolling: touch;
   }
 }
