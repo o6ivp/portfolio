@@ -93,7 +93,11 @@ const translations = {
     "research.tech.stack":
       "Python, OpenCV, dlib, Raspberry Pi, I2C, CO2 Sensor, Distance Sensor, Infrared Sensor, TensorFlow",
     "research.details": "Details",
-    "research.details.item1": "https://github.com/squiffer9/drosiness_detection",
+    // "research.details.item1":"https://github.com/squiffer9/drosiness_detection",
+    "research.details.description1":
+      "              This repository contains the source code and documentation for the drowsiness detection system, including \
+              sensor integration, computer vision algorithms, and machine learning models.",
+    "research.details.description2": "* Sorry, I'll renew it gradually.",
 
     // Contact Section
     "contact.title": "Contact",
@@ -164,7 +168,8 @@ const translations = {
     // Research Section
     "research.title": "卒業研究",
     "research.project.title": "居眠り防止システムの基礎研究",
-    "research.project.subtitle": "授業中の居眠りと二酸化炭素濃度、室温、体表面温度、瞬きの回数の関係のリアルタイム分析",
+    "research.project.subtitle":
+      "授業中の居眠りと二酸化炭素濃度、室温、体表面温度、瞬きの回数の関係のリアルタイム分析",
     "research.project.overview": "プロジェクト概要",
     "research.project.description":
       "環境条件とユーザーの状態を複数のセンサーとコンピュータビジョンを用いてモニタリングし、居眠りを検知・防止するシステムを開発。",
@@ -178,7 +183,11 @@ const translations = {
     "research.tech.stack":
       "Python, OpenCV, dlib, Raspberry Pi, I2C, CO2センサー, 測距センサー, 赤外線センサー, TensorFlow",
     "research.details": "詳細",
-    "research.details.item1": "https://github.com/squiffer9/drosiness_detection",
+    // "research.details.item1":  "https://github.com/squiffer9/drosiness_detection",
+    "research.details.description1":
+      "このリポジトリには、センサー統合、コンピュータビジョンアルゴリズム、機械学習モデルなど、居眠り検知システムのソースコードとドキュメントが含まれています。",
+    "research.details.description2":
+      "* すみません、当時のものは恥ずかしいので順次リニューアルします。",
 
     // Contact Section
     "contact.title": "連絡先",
