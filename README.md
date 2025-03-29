@@ -2,7 +2,7 @@
 
 Source code for a personal portfolio website built with React, TypeScript, Tailwind CSS, and shadcn/ui.
 
-_Page:_ https://squiffer9.github.io/profile
+_Page:_ https://o6ivp.github.io/profile
 
 ## Tech Stack
 
