@@ -9,12 +9,12 @@ const Contact = () => {
   // Contact links data
   const contactLinks = [
     {
-      href: "mailto:squiffer9@gmail.com",
+      href: "mailto:squiffer9@duck.com",
       icon: Mail,
       label: "contact.email",
     },
     {
-      href: "https://github.com/squiffer9",
+      href: "https://github.com/o6ivp",
       icon: Github,
       label: "contact.github",
     },

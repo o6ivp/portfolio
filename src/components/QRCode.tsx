@@ -9,7 +9,7 @@ const QRCode = () => {
           <div className="flex items-center justify-center gap-2 mb-6">
             <Share2 className="w-6 h-6 text-primary" />
             <h1 className="text-2xl font-bold text-center">
-              Portfolio QR Code
+              Profile QR Code
             </h1>
           </div>
           <div className="flex justify-center mb-4">
@@ -28,12 +28,12 @@ const QRCode = () => {
           <p className="text-center text-muted-foreground">
             Scan to visit{" "}
             <a
-              href="https://squiffer9.github.io/portfolio/"
+              href="https://o6ivp.github.io/profile/"
               className="text-primary hover:text-accent"
               target="_blank"
               rel="noopener noreferrer"
             >
-              https://squiffer9.github.io/portfolio/
+              https://o6ivp.github.io/profile/
             </a>
           </p>
         </Card>
